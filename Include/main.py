@@ -4,7 +4,6 @@ import sys
 import webbrowser
 import pyttsx3
 
-
 # Функция, позволяющая проговаривать слова
 # Принимает параметр "Слова" и прогроваривает их
 def talk(words):
@@ -15,7 +14,7 @@ def talk(words):
 
 # Вызов функции и передача строки
 # именно эта строка будет проговорена компьютером
-talk("Привет, чем я могу помочь вам?")
+talk("Слушаю, босс")
 
 """ 
 	Функция command() служит для отслеживания микрофона.
@@ -69,28 +68,26 @@ def command():
 # Данная функция служит для проверки текста,
 # что сказал пользователь (zadanie - текст от пользователя)
 def makeSomething(zadanie):
-	# Попросту проверяем текст на соответствие
-	# Если в тексте что сказал пользователь есть слова
-	# "открыть сайт", то выполняем команду
-	if 'открой сайт' in zadanie:
-		# Проговариваем текст
-		talk("Уже открываю")
-		# Указываем сайт для открытия
-		url = 'https://dragonswealth.ru/'
-		# Открываем сайт
-		webbrowser.open(url)
-	# если было сказано "стоп", то останавливаем прогу
-	elif 'стоп' in zadanie:
-		# Проговариваем текст
-		talk("Да, конечно, без проблем")
-		# Выходим из программы
+	if 'стоп' in zadanie:
+		talk('Прощайте, босс')
 		sys.exit()
-	# Аналогично
-	elif 'имя' in zadanie:
-		talk("Меня зовут Пятница")
+	elif 'открой мой сайт' in zadanie:
+		talk('Уже открываю')
+		url = 'https://dragonswealth.ru/'
+		webbrowser.open(url)
+	elif 'как тебя зовут' in zadanie:
+		talk('Меня зовут Пятница')
 	elif 'открой youtube' in zadanie:
 		talk('Уже открываю ютубчик')
 		url = 'https://www.youtube.com/'
+		webbrowser.open(url)
+	elif 'включи музыку' in zadanie:
+		talk('Звук поставим на всю и соседи не спят')
+		url = 'https://radio.yandex.ru/user/thebreadenergy86'
+		webbrowser.open(url)
+	elif 'мне плохо' in zadanie:
+		talk('Послушай меня, дружочек')
+		url = 'https://youtu.be/YJhN81WAXuc?t=113'
 		webbrowser.open(url)
 # Вызов функции для проверки текста будет
 # осуществляться постоянно, поэтому здесь
